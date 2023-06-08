@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 
 function App() {
+
+  //set initial states
   const [data, setData] = useState([]);
   const [name, setName] = useState("");
   const [price, setPrice] = useState();
@@ -21,27 +23,27 @@ function App() {
   };
 
   // axios POST request
-const options = {
-  url: URL,
-  method: 'POST',
-  headers: {
-    'Accept': 'application/json',
-    'Content-Type': 'application/json;charset=UTF-8'
-  },
-  data: {
-    name: {name},
-    price: {price},
-    quantity: {quantity}
-  }
-};
+  const options = {
+    url: URL,
+    method: "POST",
+    headers: {
+      Accept: "application/json",
+      "Content-Type": "application/json;charset=UTF-8",
+    },
+    data: {
+      name,
+      price,
+      quantity
+    },
+  };
 
-  const postData = async (e) =>{
-    e.preventDefault();
-    axios(options)
-    .then(response => {
+  const postData = async (ev) => {
+    ev.preventDefault();
+    axios(options).then((response) => {
       console.log(response.status);
+      console.log(response.data);
     });
-  }
+  };
 
   useEffect(() => {
     fetchData();
@@ -61,18 +63,21 @@ const options = {
                 type="text"
                 required
                 placeholder="Enter Name"
+                value={name}
                 onChange={(e) => setName(e.target.value)}
               />
               <input
                 type="number"
                 required
                 placeholder="Enter Price"
+                value={price}
                 onChange={(e) => setPrice(e.target.value)}
               />
               <input
                 type="number"
                 required
                 placeholder="Enter Quantity"
+                value={quantity}
                 onChange={(e) => setQuantity(e.target.value)}
               />
               <button type="submit">Enter</button>
