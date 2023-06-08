@@ -1,0 +1,32 @@
+
+GET http://localhost:8080
+
+###
+GET http://localhost:8080/products
+
+###
+GET http://localhost:8080/products/64816a7eb39040b7a94f5fba
+
+
+###
+POST http://localhost:8080/products
+Content-Type: application/json
+
+
+{
+    "name": "HP Revolve",
+    "price": "25000",
+    "quantity": "200"
+}
+###
+PATCH  http://localhost:8080/products/64816a7eb39040b7a94f5fba
+Content-Type: application/json
+
+
+{
+    "name" : "Lenovo Ideapad 110"
+}
+###
+DELETE http://localhost:8080/products/64816cdd5f3e64706641536d
+
+###
